@@ -2,35 +2,73 @@
 // добавляем переменные
 let roulette	= document.querySelector('.roulette'),
 	startBtn 	= document.querySelector('.start'),
-	ran;
+	random;
 
 startBtn.addEventListener('click', function() {
-	// создаем функцию
-	function selfRandom(min = 1, max = 5) { // ставим переменные по умолчанию
-	 	ran = Math.floor(Math.random() * (max - min + 1)) + min; // даем значение ran'у
-	};
-	selfRandom(); // вызываем функцю
+	function randomFunction() {
+		random = Math.round(Math.random() * 5);
+		console.log(random)
 
-	setInterval(function() {
-		roulette.scrollLeft += ran; // делаем рандомную расскрутку 
-	}, ran); // рандомное время
+		if (random == 0) {
+			random = ++random;
+		}
+
+	};
+
+	randomFunction();
+ 
+	setTimeout(function scroll() {
+		roulette.scrollLeft += 4; // делаем рандомную расскрутку 
+		setTimeout(scroll, 1);
+	}, 1); // рандомное время
 
 	for (let i = 0; i < 10; i++) { // делаем итератор в значение 10
 		// создаем две переменных 
-		let img = document.createElement('img'),
-			image = document.createElement('img');
+		let google 			= document.createElement('img'),
+			googlePlus 		= document.createElement('img'),
+			calendar 		= document.createElement('img'),
+			dev 			= document.createElement('img'),
+			cloud 			= document.createElement('img');
 		
 		// даем им путь к картинке
-		image.src = 'img/grifon.png';
-		img.src = 'img/wolf.png';
+		google.src 			= 'https://cdn.svgporn.com/logos/google-icon.svg';
+		googlePlus.src 		= 'https://cdn.svgporn.com/logos/google-plus.svg';
+		calendar.src 		= 'https://cdn.svgporn.com/logos/google-calendar.svg';
+		dev.src 			= 'https://cdn.svgporn.com/logos/google-developers-icon.svg';
+		cloud.src 			= 'https://cdn.svgporn.com/logos/google-cloud-functions.svg';
 
-		// пишим условие
-		if (ran % 2 == true) { // если четное то один результат
-			roulette.appendChild(img);
-			roulette.appendChild(image);
-		} else { // если не четное другой результат 
-			roulette.appendChild(image);
-			roulette.appendChild(img);
+
+		// пишим условия дабы был рандом
+		if (random == 1) {
+			roulette.appendChild(calendar);
+			roulette.appendChild(dev);
+			roulette.appendChild(google);
+			roulette.appendChild(googlePlus);
+			roulette.appendChild(cloud);
+		} else if (random == 2) {
+			roulette.appendChild(dev);
+			roulette.appendChild(google);
+			roulette.appendChild(googlePlus);
+			roulette.appendChild(cloud);
+			roulette.appendChild(calendar);
+		} else if (random == 3) {
+			roulette.appendChild(googlePlus);
+			roulette.appendChild(dev);
+			roulette.appendChild(calendar);
+			roulette.appendChild(google);
+			roulette.appendChild(cloud);
+		} else if (random == 4) {
+			roulette.appendChild(cloud);
+			roulette.appendChild(googlePlus);
+			roulette.appendChild(calendar);
+			roulette.appendChild(dev);
+			roulette.appendChild(google);
+		} else if (random == 5) {
+			roulette.appendChild(calendar);
+			roulette.appendChild(googlePlus);
+			roulette.appendChild(cloud);
+			roulette.appendChild(dev);
+			roulette.appendChild(google);
 		}
 	}
-});
+});	 
