@@ -60,8 +60,8 @@ startBtn.addEventListener('click', function() {
 		} else if (random == 4) {
 			roulette.appendChild(cloud);
 			roulette.appendChild(googlePlus);
-			roulette.appendChild(calendar);
 			roulette.appendChild(dev);
+			roulette.appendChild(calendar);
 			roulette.appendChild(google);
 		} else if (random == 5) {
 			roulette.appendChild(calendar);
